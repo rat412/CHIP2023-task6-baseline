@@ -118,6 +118,7 @@ def inference(texts):
 def predict(file_path,output_path):
     f = open(file_path, 'r', encoding='utf-8')
     test_datas = f.readlines()
+    test_datas[-1] = test_datas[-1]+'\n'
     test_datas = [data[:-1] for data in test_datas]
     results = inference(test_datas)
     f.close()
