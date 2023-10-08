@@ -124,7 +124,7 @@ def predict(file_path,output_path):
 
     fw = open(output_path, 'w', encoding='utf-8')
     for i in range(len(test_datas)):
-        fw.write(f"{test_datas[i][:-1]}\t{results[i]}\n")
+        fw.write(f"{test_datas[i]}\t{results[i]}\n")
     fw.close()
 
 if __name__ == '__main__':
