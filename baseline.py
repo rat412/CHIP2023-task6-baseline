@@ -118,13 +118,13 @@ def inference(texts):
 def predict(file_path,output_path):
     f = open(file_path, 'r', encoding='utf-8')
     test_datas = f.readlines()
-    test_datas = [data.split('\t')[0] for data in test_datas]
+    test_datas = [data[:-1] for data in test_datas]
     results = inference(test_datas)
     f.close()
 
     fw = open(output_path, 'w', encoding='utf-8')
     for i in range(len(test_datas)):
-        fw.write(f"{test_datas[i]}\t{results[i]}\n")
+        fw.write(f"{test_datas[i][:-1]}\t{results[i]}\n")
     fw.close()
 
 if __name__ == '__main__':
@@ -132,4 +132,4 @@ if __name__ == '__main__':
     model.fit(train_dataloader, epochs=10, steps_per_epoch=None, callbacks=[evaluator])
 
     # 预测
-    predict('datas/dev.txt', 'submit.txt')
+    predict('datas/pred.txt', 'submit.txt')
